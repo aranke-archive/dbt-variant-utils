@@ -1,5 +1,5 @@
-input
-{}
-{"foo": "bar"}
-"{""foo"": ""baz"", ""qux"": true}"
-"{""foo"": 1, ""qux"": false}"
+idx,input
+1,{}
+2,"{""foo"": ""bar"", ""excluded_key"": ""somevalue""}"
+3,"{""foo"": ""baz"", ""qux"": true}"
+4,"{""foo"": 1, ""qux"": false}"

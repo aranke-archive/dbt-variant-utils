@@ -1,4 +1,4 @@
-{% macro object_pivot(t, c, primitive=true) %}
+{% macro object_pivot(t, c, primitive=true, include_columns=[], exclude_keys=['null']) %}
     {% set keys_query = run_query('select distinct key from ' ~ t ~ ', lateral flatten(' ~ c ~ ')' ) %}
 
     {% if execute %}
@@ -8,13 +8,18 @@
     {% endif %}
 
     select
+    {% for ic in include_columns %}
+        {{ ic }},
+    {% endfor %}
     {% for k in keys %}
-        {% if primitive %}
-            {{ dbt_variant_utils.as_primitive(t, "get(" ~ c ~ ", '" ~ k ~ "')") }} as {{ k }}
-        {% else %}
-            get({{ c }}, '{{ k }}') as {{ k }}
+        {% if k not in exclude_keys %}
+            {% if primitive %}
+                {{ dbt_variant_utils.as_primitive(t, "get(" ~ c ~ ", '" ~ k ~ "')") }} as {{ k }}
+            {% else %}
+                get({{ c }}, '{{ k }}') as {{ k }}
+            {% endif %}
+            {% if not loop.last %},{% endif %}
         {% endif %}
-        {% if not loop.last %},{% endif %}
     {% endfor %}
     from {{ t }}
 {% endmacro %}

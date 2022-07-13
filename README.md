@@ -29,3 +29,8 @@ with pivot_table as (
 
 select * from pivot_table
 ```
+
+Configuration:
+1. `primitive` – Returns primitive types if `true` else returns variants. Defaults to `true`.
+2. `include_columns` – Additional columns to include from the source table, useful for including primary keys. Defaults to `[]`.
+3. `exclude_keys` – Keys to exclude while flattening the object. Defaults to `['null']`.

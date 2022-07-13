@@ -1,5 +1,5 @@
-foo,qux
-null,null
-bar,null
-baz,true
-null,false
+idx,foo,qux
+1,null,null
+2,bar,null
+3,baz,true
+4,null,false
