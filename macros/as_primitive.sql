@@ -7,7 +7,7 @@
     {% set type = none %}
     {% endif %}
 
-    {% if type %}
+    {% if type and type|lower not in ['null_value'] %}
         as_{{ type|lower }}({{ c }})
     {% else %}
         null
