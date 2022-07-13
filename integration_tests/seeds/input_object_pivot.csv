@@ -1,0 +1,5 @@
+input
+{}
+{"foo": "bar"}
+"{""foo"": ""baz"", ""qux"": true}"
+"{""foo"": 1, ""qux"": false}"

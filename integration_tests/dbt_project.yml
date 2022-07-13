@@ -1,0 +1,16 @@
+name: 'dbt_variant_utils_integration_tests'
+version: '1.0'
+config-version: 2
+
+profile: 'dbt_variant_utils'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+    - "target"
+    - "dbt_packages"

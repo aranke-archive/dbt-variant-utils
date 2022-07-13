@@ -1,0 +1,49 @@
+version: 2
+models:
+  - name: stg_as_primitive
+    columns:
+      - name: same_type
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: variant
+      - name: with_null
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: variant
+      - name: different_types
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: variant
+  - name: dim_as_primitive
+    columns:
+      - name: cast_same_type
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: number
+      - name: cast_with_null
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+      - name: cast_different_types
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+  - name: stg_object_pivot
+    columns:
+      - name: parsed_input
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: variant
+  - name: dim_object_pivot
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('output_object_pivot')
+    columns:
+      - name: foo
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+      - name: qux
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
