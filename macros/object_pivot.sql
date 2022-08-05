@@ -1,6 +1,7 @@
 {% macro object_pivot(t, c, primitive=true, include_columns=[], exclude_keys=['null']) %}
-    {% set keys_query = run_query("select distinct regexp_replace(key, '[ .]', '_') from " ~ t ~ ", lateral flatten(" ~ c ~ ")" ) %}
-
+    {% set query = "select distinct regexp_replace(key, '[ .]', '_') from " ~ t ~ ", lateral flatten(" ~ c ~ ")" %}
+    {% set keys_query = run_query(query) %}
+    
     {% if execute %}
     {% set keys = keys_query.columns[0].values() %}
     {% else %}
