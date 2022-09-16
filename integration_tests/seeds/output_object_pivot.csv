@@ -1,5 +1,5 @@
-idx,foo,qux,thud
-1,null,null,null
-2,bar,null,null
-3,baz,true,0.3234
-4,null,false,1.32
+idx,foo,qux,thud,name_with_space
+1,null,null,null,null
+2,bar,null,null,null
+3,baz,true,0.3234,null
+4,null,false,1.32,a value
