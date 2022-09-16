@@ -1,5 +1,5 @@
 idx,input
 1,{}
 2,"{""foo"": ""bar"", ""excluded_key"": ""somevalue""}"
-3,"{""foo"": ""baz"", ""qux"": true}"
-4,"{""foo"": 1, ""qux"": false}"
+3,"{""foo"": ""baz"", ""qux"": true, ""thud"": 0.3234}"
+4,"{""foo"": 1, ""qux"": false, ""thud"": 1.32}"
